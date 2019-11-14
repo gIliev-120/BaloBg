@@ -67,10 +67,16 @@
 
 
     </style>
+
+    <g:javascript>
+        function getNewDog() {
+        //TODO AJAX FUNC HERE!
+        }
+    </g:javascript>
 </head>
 <body>
-
-<div class="container">
+<g:hiddenField name="dogNumb" value="${dogNumber}"/>
+<div id="body" class="container">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <g:each in="${dogImages}" var="img" status="i" >
@@ -91,13 +97,21 @@
     </div>
     <div class="text-center">
         <h1>${dog.details}</h1>
+        <h1>Години: ${dog.age}</h1>
+    </div>
+    <div id="shelterInfo" class="colapse collapse">
+        <div class="text-center">
+
+            <h1>За повече информация: </h1>
+            <h1>Адрес: ${dog.shelter.address}</h1>
+            <h1>Телефон: ${dog.shelter.telNumber}</h1>
+            <h1>E-mail: ${dog.shelter.email}</h1>
+            <h1><a href="${dog.shelter.website}">${dog.shelter.website}</a></h1>
+        </div>
     </div>
     <div class="text-center" >
-        <h1>Shelter INFO</h1>
-    </div>
-    <div class="text-center" >
-        <button type="button" class="btn btn-danger">DISLIKE</button>
-        <button type="button" class="btn btn-success">LIKE</button>
+        <button type="button" class="btn btn-danger" onclick="getNewDog()">DISLIKE</button>
+        <button type="button" data-toggle="collapse" data-target="#shelterInfo" class="btn btn-success">LIKE</button>
     </div>
 
 </div>

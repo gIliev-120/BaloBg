@@ -19,11 +19,20 @@ class BootStrap {
 
         def aList = [Aone,Atwo,Athree]
         def r = new Random();
-        def dir = new File("C:\\Users\\giliev\\Pictures\\doges");
-        dir.eachFile(FileType.FILES) {
-            file ->
-                new ImageInfo(image: file.getBytes(),imageContentType: Files.probeContentType(file.toPath()), announcement: aList.get(r.nextInt(aList.size()))).save();
+        //def dir = new File("C:\\Users\\giliev\\Pictures\\doges");
+        def dir = new File("../../Pictures/dogs/");
+
+        for(final File fileEntry : dir.listFiles()){
+            if(!fileEntry.isDirectory()){
+                def img = new ImageInfo(image: fileEntry.getBytes(),imageContentType: 'jpg', announcement: aList.get(r.nextInt(aList.size())))
+                if(!img.save()){
+                    img.errors.allErrors.each {
+                        println it
+                    }
+                }
+            }
         }
+
 
 
 

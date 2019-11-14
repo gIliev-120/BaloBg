@@ -5,5 +5,6 @@ class ImageInfo {
     String imageContentType;
     static belongsTo = [announcement:Announcement]
     static constraints = {
+        image sqlType: 'blob'
     }
 }

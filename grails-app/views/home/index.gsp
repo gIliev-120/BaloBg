@@ -73,12 +73,9 @@
 <div class="container">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://thehappypuppysite.com/wp-content/uploads/2017/10/Cute-Dog-Names-HP-long.jpg"/>
-            </div>
-            <g:each in="">
-                <div class="carousel-item">
-                    <img src="https://thehappypuppysite.com/wp-content/uploads/2017/10/Cute-Dog-Names-HP-long.jpg"/>
+            <g:each in="${dogImages}" var="img" status="i" >
+                <div class="carousel-item ${i==0 ? 'active' : ''}">
+                    <img src="data:image/jpg;base64,${img}" />
                 </div>
             </g:each>
         </div>
@@ -93,7 +90,7 @@
         </a>
     </div>
     <div class="text-center">
-        <h1>INFO ABOUT DOGG</h1>
+        <h1>${dog.details}</h1>
     </div>
     <div class="text-center" >
         <h1>Shelter INFO</h1>

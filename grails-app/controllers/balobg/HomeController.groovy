@@ -4,6 +4,8 @@ class HomeController {
     def imageConverterService
 
     def index() {
+        //def currentUser =
+        //def announcments = Announcement.findAllByHasViewedAndUser(false,currentUser);
         def doge = Announcement.list().get(1);
         def imgsList = imageConverterService.convertByteImageToBase64String(doge)
 
